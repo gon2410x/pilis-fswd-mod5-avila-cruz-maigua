@@ -1,22 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { UserProvider } from './src/contexts/UserContext';
+import { MainStackScreen } from './src/screens/location-list/MainStackScreen';
+
+const LocationListStack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <>
       <UserProvider>
         <NavigationContainer>
-          {/* pantallas con Tab */}
+          <LocationListStack.Navigator screenOptions={{ headerShown: false }}>
+            
+            {/* //pantallas con Tab */}
+            <LocationListStack.Screen name='Main' component={MainStackScreen} />
+            
+            {/* //pantallas sin Tab */}
 
-          {/* pantallas sin Tab */}
 
+          </LocationListStack.Navigator>
         </NavigationContainer>
-
-        <Text >App.js!</Text>
       </UserProvider>
-
+        
       <StatusBar style='auto'/>
     </>
   );
